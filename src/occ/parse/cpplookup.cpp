@@ -522,7 +522,7 @@ LEXEME* nestedPath(LEXEME* lex, SYMBOL** sym, NAMESPACEVALUES** ns, bool* throug
                             TEMPLATEPARAMLIST* p = current;
                             while (p)
                             {
-                                if (!p->p->byClass.dflt)
+                                if (!p->p->byClass.dflt || p->p->byClass.dflt->type == bt_templateselector)
                                     break;
 
                                 p = p->next;

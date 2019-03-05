@@ -356,6 +356,10 @@ bool matchOverload(TYPE* tnew, TYPE* told, bool argsOnly)
                 }
             }
         }
+        else
+        {
+            return false;
+        }
         hold = hold->next;
         hnew = hnew->next;
     }

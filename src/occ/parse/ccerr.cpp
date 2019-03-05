@@ -991,7 +991,8 @@ void errorqualified(int err, SYMBOL* strSym, NAMESPACEVALUES* nsv, const char* n
 }
 void errorNotMember(SYMBOL* strSym, NAMESPACEVALUES* nsv, const char* name)
 {
-    errorqualified(ERR_NAME_IS_NOT_A_MEMBER_OF_NAME, strSym, nsv, name);
+    if (!templateNestingCount)
+        errorqualified(ERR_NAME_IS_NOT_A_MEMBER_OF_NAME, strSym, nsv, name);
 }
 void error(int err) { printerr(err, preprocFile, preprocLine); }
 void errorint(int err, int val) { printerr(err, preprocFile, preprocLine, val); }
