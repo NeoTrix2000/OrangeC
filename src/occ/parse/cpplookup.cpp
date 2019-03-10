@@ -4134,6 +4134,7 @@ static void doNames(SYMBOL* sym)
 SYMBOL* GetOverloadedFunction(TYPE** tp, EXPRESSION** exp, SYMBOL* sp, FUNCTIONCALL* args, TYPE* atp, bool toErr,
                               bool maybeConversion, bool toInstantiate, int flags)
 {
+    static int aa;
     STRUCTSYM s;
     s.tmpl = 0;
 

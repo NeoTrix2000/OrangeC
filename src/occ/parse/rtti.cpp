@@ -818,7 +818,7 @@ static bool throughThis(EXPRESSION* exp)
 }
 void XTDumpTab(SYMBOL* funcsp)
 {
-    if (funcsp->xc && funcsp->xc->xctab && cparams.prm_xcept)
+    if (funcsp->xc && funcsp->xc->xctab && funcsp->xcMode != xc_none && cparams.prm_xcept)
     {
         XCLIST *list = NULL, **listPtr = &list, *p;
         SYMBOL* throwSym;

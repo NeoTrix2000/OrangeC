@@ -2530,8 +2530,6 @@ LEXEME* getBasicType(LEXEME* lex, SYMBOL* funcsp, TYPE** tp, SYMBOL** strSym_out
 founddecltype:
     if (!foundsomething)
     {
-        if (strstr(lex->file, "__tree") && lex->line == 652)
-            printf("hi");
         bool typeName = false;
         type = bt_int;
         if (MATCHKW(lex, kw_typename))

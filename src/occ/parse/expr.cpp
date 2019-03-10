@@ -424,6 +424,7 @@ static LEXEME* variableName(LEXEME* lex, SYMBOL* funcsp, TYPE* atp, TYPE** tp, E
     {
         sp = gsearch(lex->value.s.a);
     }
+
     if (sp)
     {
 

@@ -870,6 +870,13 @@ void deferredInitializeStructFunctions(SYMBOL* cur)
                     SYMBOL* sp1 = (SYMBOL*)hr1->p;
                     if (!sp1->templateLevel)
                     {
+                        STRUCTSYM t1;
+                        t1.tmpl = 0;
+                        if (sp1->parentClass && sp1->parentClass->templateParams)
+                        {
+                            t1.tmpl = sp1->parentClass->templateParams;
+                            addTemplateDeclaration(&t1);
+                        }
                         HASHREC* hr2 = basetype(sp1->tp)->syms->table[0];
                         while (hr2)
                         {
@@ -891,7 +898,7 @@ void deferredInitializeStructFunctions(SYMBOL* cur)
                                     sym->stackblock = !isref(sp2->tp);
                                     lex = initialize(lex, theCurrentFunc, sym, sc_auto, false, 0); /* also reserves space */
                                     sp2->init = sym->init;
-                                    if (sp2->init->exp->type == en_thisref)
+                                    if (sp2->init->exp && sp2->init->exp->type == en_thisref)
                                     {
                                         EXPRESSION** expr = &sp2->init->exp->left->v.func->thisptr;
                                         if ((*expr)->type == en_add && isconstzero(&stdint, (*expr)->right))
@@ -907,6 +914,8 @@ void deferredInitializeStructFunctions(SYMBOL* cur)
                             }
                             hr2 = hr2->next;
                         }
+                        if (t1.tmpl)
+                            dropStructureDeclaration();
                     }
                     hr1 = hr1->next;
                 }
