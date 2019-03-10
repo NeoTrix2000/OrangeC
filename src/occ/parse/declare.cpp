@@ -2722,7 +2722,7 @@ founddecltype:
                         {
                             tn = sp->tp;
                         }
-                        if (tpx->sp->templateSelector->next->next && tpx->sp->templateSelector->next->sym &&
+                        if (tpx->sp->templateSelector->next->next && tpx->sp->templateSelector->next->sym && tpx->sp->templateSelector->next->sym->isConstructor &&
                             !strcmp(tpx->sp->templateSelector->next->sym->name, tpx->sp->templateSelector->next->next->name))
                         {
                             if (destructor)
